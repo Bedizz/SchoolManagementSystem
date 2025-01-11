@@ -128,7 +128,7 @@ const Menu = () => {
           {menu.items.map((item, index) => {
             if(item.visible.includes(role)) {
               return (
-                <Link href={item.href} key={index} className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2">
+                <Link href={item.href} key={index} className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 rounded-md hover:bg-maSkyLight ">
                 <Image src={item.icon} alt={item.label} width={20} height={20}  />
                 <span className="hidden lg:block">{item.label}</span>
           </Link>
