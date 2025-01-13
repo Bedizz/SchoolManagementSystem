@@ -102,7 +102,7 @@ const teacherPage = () => {
         </div>
       </div>
       {/* Middle */}
-      <Container columns={columns} renderRow={renderRow} data={parentsData} />
+      <Container columns={columns} renderRow={renderRow} data={teachersData} />
       <Pagination />
     </div>
   );

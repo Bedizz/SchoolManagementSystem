@@ -77,7 +77,7 @@ const ParentsPage = () => {
   return (
     <div className=" p-4 rounded-md flex-1 m-4 mt-0">
       <div className="flex justify-between items-center ">
-        <h1 className="hidden md:block text-lg font-semibold">All Students</h1>
+        <h1 className="hidden md:block text-lg font-semibold">All Parents</h1>
         <div className="flex flex-col md:flex-row items-center gap-4  w-full md:w-auto">
           <Search />
           <div className="flex items-center gap-4 self-end">
