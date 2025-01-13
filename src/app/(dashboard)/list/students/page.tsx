@@ -1,53 +1,50 @@
-import Container from "@/components/Container";
-import Pagination from "@/components/Pagination";
-import Search from "@/components/Search";
-import { parentsData, teachersData } from "@/lib/data";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Container from '@/components/Container'
+import Pagination from '@/components/Pagination'
+import Search from '@/components/Search'
+import { parentsData, role, studentsData } from '@/lib/data'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+
 const columns = [
-  {
-      header: "Info",
-      accessor: "info",
-  },
-  {
-      header: "Teacher ID",
-      accessor: "teacherID",
-      className: "hidden md:table-cell"
-  },
-  {
-      header: "Subjects",
-      accessor: "subjects",
-      className: "hidden md:table-cell"
-  },
-  {
-      header: "Classes",
-      accessor: "classes",
-      className: "hidden md:table-cell"
-  },
-  {
-      header: "Phone",
-      accessor: "phone",
-      className: "hidden md:table-cell"
-  },
-  {
-      header: "Adress",
-      accessor: "adress",
-      className: "hidden md:table-cell"
-  },
-  {
-      header: "Actions",
-      accessor: "actions",
-      className: "hidden md:table-cell"
-  },
-]
+    {
+        header: "Info",
+        accessor: "info",
+    },
+    {
+        header: "Student ID",
+        accessor: "studentId",
+        className: "hidden md:table-cell"
+    },
+    {
+        header: "Grade",
+        accessor: "grade",
+        className: "hidden md:table-cell"
+    },
+    {
+        header: "Classes",
+        accessor: "classes",
+        className: "hidden md:table-cell"
+    },
+    {
+        header: "Phone",
+        accessor: "phone",
+        className: "hidden md:table-cell"
+    },
+    {
+        header: "Address",
+        accessor: "address",
+        className: "hidden md:table-cell"
+    },
+    {
+        header: "Actions",
+        accessor: "actions",
+        className: "hidden md:table-cell"
+    },
+  ]
 
-
-
-
-const teacherPage = () => {
-
-  const renderRow = (item: Teacher) => {
+const StudentPage = () => {
+  const renderRow = (item: Student) => {
     return (
       <tr key={item.id} className="border-b border-gray-200 even:bg-gray-100 text-sm hover:bg-maPurpleLight" >
       <td className='flex items-center gap-4 p-4'>
@@ -57,9 +54,9 @@ const teacherPage = () => {
            <p className="text-xs text-gray-500">{item?.email}</p>
        </div>
        </td>
-       <td className="hidden md:table-cell">{item.teacherId}</td>
-       <td className="hidden md:table-cell">{item.subjects.join(",")}</td>
-       <td className="hidden md:table-cell">{item.classes.join(",")}</td>
+       <td className="hidden md:table-cell">{item.studentId}</td>
+       <td className="hidden md:table-cell">{item.grade}</td>
+       <td className="hidden md:table-cell">{item.class}</td>
        <td className="hidden md:table-cell">{item.phone}</td>
        <td className="hidden md:table-cell">{item.address}</td>
        <td>
@@ -82,10 +79,11 @@ const teacherPage = () => {
    </tr>
     )
   }
+    
   return (
     <div className=" p-4 rounded-md flex-1 m-4 mt-0">
       <div className="flex justify-between items-center ">
-        <h1 className="hidden md:block text-lg font-semibold">All Teachers</h1>
+        <h1 className="hidden md:block text-lg font-semibold">All Parents</h1>
         <div className="flex flex-col md:flex-row items-center gap-4  w-full md:w-auto">
           <Search />
           <div className="flex items-center gap-4 self-end">
@@ -95,17 +93,19 @@ const teacherPage = () => {
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-maYellow">
               <Image src="/sort.png" alt="filter" width={14} height={14} />
             </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-maYellow">
-              <Image src="/plus.png" alt="filter" width={14} height={14} />
-            </button>
+            {role === "admin" && (
+              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-maYellow">
+                <Image src="/plus.png" alt="filter" width={14} height={14} />
+              </button>
+            )}
           </div>
         </div>
       </div>
       {/* Middle */}
-      <Container columns={columns} renderRow={renderRow} data={parentsData} />
+      <Container columns={columns} data={studentsData} renderRow={renderRow} />
       <Pagination />
     </div>
   );
-};
+}
 
-export default teacherPage;
+export default StudentPage

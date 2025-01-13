@@ -1,67 +1,40 @@
 import Container from "@/components/Container";
 import Pagination from "@/components/Pagination";
 import Search from "@/components/Search";
-import { parentsData, teachersData } from "@/lib/data";
+import { parentsData, subjectsData, teachersData } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 const columns = [
   {
-      header: "Info",
-      accessor: "info",
+      header: "Name",
+      accessor: "name",
   },
+
   {
-      header: "Teacher ID",
-      accessor: "teacherID",
+      header: "Teachers",
+      accessor: "teachers",
       className: "hidden md:table-cell"
   },
-  {
-      header: "Subjects",
-      accessor: "subjects",
-      className: "hidden md:table-cell"
-  },
-  {
-      header: "Classes",
-      accessor: "classes",
-      className: "hidden md:table-cell"
-  },
-  {
-      header: "Phone",
-      accessor: "phone",
-      className: "hidden md:table-cell"
-  },
-  {
-      header: "Adress",
-      accessor: "adress",
-      className: "hidden md:table-cell"
-  },
-  {
-      header: "Actions",
-      accessor: "actions",
-      className: "hidden md:table-cell"
-  },
+
 ]
 
 
 
 
-const teacherPage = () => {
+const SubjectsPage = () => {
 
-  const renderRow = (item: Teacher) => {
+  const renderRow = (item: Subject) => {
     return (
       <tr key={item.id} className="border-b border-gray-200 even:bg-gray-100 text-sm hover:bg-maPurpleLight" >
       <td className='flex items-center gap-4 p-4'>
-       <Image src={item.photo} alt={item.name} width={40} height={40} className="md:hidden xl:block w-10 h-10 rounded-full object-cover" />
        <div className='flex flex-col'>
            <h3 className="font-semibold">{item.name}</h3>
-           <p className="text-xs text-gray-500">{item?.email}</p>
        </div>
        </td>
-       <td className="hidden md:table-cell">{item.teacherId}</td>
-       <td className="hidden md:table-cell">{item.subjects.join(",")}</td>
-       <td className="hidden md:table-cell">{item.classes.join(",")}</td>
-       <td className="hidden md:table-cell">{item.phone}</td>
-       <td className="hidden md:table-cell">{item.address}</td>
+
+       <td className="hidden md:table-cell">{item.teachers.join(",")}</td>
+
        <td>
         <div className="flex items-center gap-2">
           <Link href={`/list/teachers/${item.id}`}>
@@ -102,10 +75,10 @@ const teacherPage = () => {
         </div>
       </div>
       {/* Middle */}
-      <Container columns={columns} renderRow={renderRow} data={parentsData} />
+      <Container columns={columns} renderRow={renderRow} data={subjectsData} />
       <Pagination />
     </div>
   );
 };
 
-export default teacherPage;
+export default SubjectsPage;
