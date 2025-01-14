@@ -1,7 +1,8 @@
 import Container from "@/components/Container";
+import FormModel from "@/components/FormModel";
 import Pagination from "@/components/Pagination";
 import Search from "@/components/Search";
-import { parentsData, subjectsData, teachersData } from "@/lib/data";
+import { parentsData, role, subjectsData, teachersData } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -41,14 +42,13 @@ const SubjectsPage = () => {
           <button className="w-7 h-7 flex items-center justify-center rounded-full bg-maSky">
             <Image src="/view.png" alt="edit" width={16} height={16}  />
           </button>
-          
           </Link>
-          <Link href={`/list/teachers/${item.id}`}>
-          <button className="w-7 h-7 flex items-center justify-center rounded-full bg-maPurple">
-            <Image src="/delete.png" alt="edit" width={16} height={16}  />
-          </button>
+
+           {role === "admin" && (
+            <FormModel table="subject" type="delete" id={item.id}  />
+           )}
+
           
-          </Link>
         </div>
        </td>
 
@@ -68,9 +68,9 @@ const SubjectsPage = () => {
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-maYellow">
               <Image src="/sort.png" alt="filter" width={14} height={14} />
             </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-maYellow">
-              <Image src="/plus.png" alt="filter" width={14} height={14} />
-            </button>
+{role === "admin" && (
+            <FormModel table="subject" type="create"  />
+)}
           </div>
         </div>
       </div>

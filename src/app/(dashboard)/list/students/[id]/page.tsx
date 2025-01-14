@@ -14,7 +14,7 @@ const StudentPage = () => {
       {/* TOP */}
       <div className="flex flex-col lg:flex-row gap-4">
         {/* USER INFO CARD */}
-        <div className="bg-lamaSky py-6 px-4 rounded-md flex-1 flex gap-4">
+        <div className="bg-maSky py-6 px-4 rounded-md flex-1 flex gap-4">
           <div className="w-1/3">
             <Image
               src="https://images.pexels.com/photos/5414817/pexels-photo-5414817.jpeg?auto=compress&cs=tinysrgb&w=1200"

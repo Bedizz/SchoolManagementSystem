@@ -1,4 +1,5 @@
 import Container from '@/components/Container'
+import FormModel from '@/components/FormModel'
 import Pagination from '@/components/Pagination'
 import Search from '@/components/Search'
 import { classesData, role } from '@/lib/data'
@@ -43,18 +44,12 @@ const ClassesPage = () => {
 
        <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`}>
-          <button className="w-7 h-7 flex items-center justify-center rounded-full bg-maSky">
-            <Image src="/view.png" alt="edit" width={16} height={16}  />
-          </button>
-          
-          </Link>
-          <Link href={`/list/teachers/${item.id}`}>
-          <button className="w-7 h-7 flex items-center justify-center rounded-full bg-maPurple">
-            <Image src="/delete.png" alt="edit" width={16} height={16}  />
-          </button>
-          
-          </Link>
+        {role === "admin" && (
+              <>
+                <FormModel table="class" type="update" data={item} />
+                <FormModel table="class" type="delete" id={item.id} />
+              </>
+            )}
         </div>
        </td>
 
@@ -76,10 +71,8 @@ const ClassesPage = () => {
               <Image src="/sort.png" alt="filter" width={14} height={14} />
             </button>
             {role === "admin" && (
-              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-maYellow">
-                <Image src="/plus.png" alt="filter" width={14} height={14} />
-              </button>
-            )}
+            <FormModel table="class" type="create"   />
+           )}
           </div>
         </div>
       </div>
