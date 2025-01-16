@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-const role = "student";
+const role = "admin";
 
 const menuItems = [
   {
