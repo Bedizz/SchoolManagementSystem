@@ -62,6 +62,12 @@ const StudentPage = () => {
        <td className="hidden md:table-cell">{item.address}</td>
        <td>
         <div className="flex items-center gap-2">
+          <Link href={`/students/${item.id}`}>
+            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-maSky">
+              <Image src="/view.png" alt="eye" className='rounded-full ' width={16} height={16} />
+            </button>
+          </Link>
+
         {role === "admin" && (
               <>
                 <FormModel table="student" type="update" data={item} />
@@ -89,7 +95,7 @@ const StudentPage = () => {
               <Image src="/sort.png" alt="filter" width={14} height={14} />
             </button>
             {role === "admin" && (
-              <FormModel table="announcement" type="create" />
+              <FormModel table="student" type="create" />
             )}
           </div>
         </div>
